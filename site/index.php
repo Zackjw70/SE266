@@ -8,7 +8,7 @@
 <body>
     <h1>Zachary Wyeth's Site</h1>
     <ul>
-        <li><a href="../week1/1G/index.php">Week 1</a></li>
+        <li><a href="../Week1/1G/index.php">Week 1</a></li>
     </ul>
 </body>
 </html>
