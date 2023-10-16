@@ -11,8 +11,8 @@
     <!--LINK TO GITHUB: https://github.com/Zackjw70/SE266/blob/main/site/index.php-->
     <h2>Weekly Assignments</h2>
     <ul>
-        <li><a href="">Week 1</a></li>
-        <li><a href="">Week 2</a></li>
+        <li><a href="../week1/1G">Week 1</a></li>
+        <li><a href="../week2">Week 2</a></li>
         <li><a href="">Week 3</a></li>
         <li><a href="">Week 4</a></li>
         <li><a href="">Week 5</a></li>
