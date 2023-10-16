@@ -195,8 +195,10 @@ if (isset($_POST['submitBtn'])){
 
 
 <?php
-
-
-
-
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+     $file = basename($_SERVER['PHP_SELF']);
+    $mod_date=date("F d Y h:i:s A", filemtime($file));
+    echo "File last updated $mod_date ";
 ?>
