@@ -2,7 +2,7 @@
 
     include ( __DIR__ . '/db.php');
 
-    function getTeams(){
+    function getPatients(){
         global $db;
 
         $results=[];
