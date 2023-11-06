@@ -15,7 +15,7 @@
         <li><a href="../week2">Week 2</a></li>
         <li><a href="../week3/atm/atm_starter.php">Week 3</a></li>
         <li><a href="../week4/Patients/view_patients.php">Week 4</a></li>
-        <li><a href="">Week 5</a></li>
+        <li><a href="../week5/Patients/view_patients.php">Week 5</a></li>
         <li><a href="">Week 6</a></li>
         <li><a href="">Week 7</a></li>
         <li><a href="">Week 8</a></li>

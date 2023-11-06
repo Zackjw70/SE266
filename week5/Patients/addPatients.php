@@ -15,7 +15,7 @@ function age ($bdate) {
 $firstName = '';
 $lastName = '';
 $birthdate = '';
-$married = false;
+$married = '';
 $heightFt = '';
 $heightIn = '';
 $weight = '';
@@ -41,12 +41,12 @@ if (isset($_POST['submitBtn'])){
         $error += 1;
         echo "<p style='color:red'>Please select married choice!</p>";
     }
-    if ($married == 'is married'){
-        $married = true;
+    if ($married == 'Is married'){
+        $married = 0;
 
     }
     else{
-        $married = false;
+        $married = 1;
     }
     if (empty($birthdate = filter_input(INPUT_POST, 'birthdate'))){
         $error += 1;
@@ -156,9 +156,9 @@ if (isset($_POST['submitBtn'])){
         </div>
         <div>
             <label for="married">Married: </label>
-            <input type="radio" id="ismarried" name='married' value='Is married' <?= $married==true?"checked":"" ?>>
+            <input type="radio" id="ismarried" name='married' value='Is married' <?= $married==0?"checked":""; ?>>
             <label for="ismarried">Yes</label>
-            <input type="radio" id="nomarried" name='married' value='Not married'<?= $married==false?"checked":"" ?>>
+            <input type="radio" id="nomarried" name='married' value='Not married'<?= $married==1?"checked":""; ?>>
             <label for="nomarried">No</label>
         </div>
         <div>

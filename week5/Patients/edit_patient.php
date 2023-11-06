@@ -1,29 +1,45 @@
+
 <?php
 
-ini_set('display_errors' ,1);
+    ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     include __DIR__ . '/models/model_patients.php';
 
-function age ($bdate) {
-    $date = new DateTime($bdate);
-    $now = new DateTime();
-    $interval = $now->diff($date);
-    return $interval->y;
- }
+    function age ($bdate) {
+        $date = new DateTime($bdate);
+        $now = new DateTime();
+        $interval = $now->diff($date);
+        return $interval->y;
+     }
 
-$firstName = '';
-$lastName = '';
-$birthdate = '';
-$married = false;
-$heightFt = '';
-$heightIn = '';
-$weight = '';
 
-$error = 0;
+    $error = "";
+
+
+    if(isset($_GET['action'])){
+        $action = filter_input(INPUT_GET, 'action');
+        $id = filter_input(INPUT_GET, 'patientId');
+
+        if($action == "Update"){
+            $pa = getPatient($id);
+            $fName = $pa['fName'];
+            $lName = $pa['lName'];
+            $age = $pa['age'];
+            $married = $pa['married'];
+            $birthdate = $pa['birthDate'];
+            $height = $pa['height'];
+            $weight = $pa['pWeight'];
+            $heightFt = $height / 12;
+            $heightFt = floor($heightFt);
+            $subt = $heightFt * 12;
+            $heightIn = $height - $subt;
+        }
+    }
 
 
 if (isset($_POST['submitBtn'])){
+    $id = filter_input(INPUT_POST, 'patientId');
     $error = 0;
     if (!empty($firstName = filter_input(INPUT_POST, 'firstName'))){
 
@@ -41,12 +57,12 @@ if (isset($_POST['submitBtn'])){
         $error += 1;
         echo "<p style='color:red'>Please select married choice!</p>";
     }
-    if ($married == 'is married'){
-        $married = true;
+    if ($married == 'Is married'){
+        $married = 0;
 
     }
     else{
-        $married = false;
+        $married = 1;
     }
     if (empty($birthdate = filter_input(INPUT_POST, 'birthdate'))){
         $error += 1;
@@ -114,9 +130,12 @@ if (isset($_POST['submitBtn'])){
     if ($error == 0){
         $heightFinal = $heightFt * 12 + $heightIn;
 
+
+
+
         // $bmi = bmi($heightFt, $heightIn, $weight);
         // $desc = bmides($bmi);
-        addPatient ($firstName, $lastName, $married, $birthdate, $age, $heightFinal, $weight);
+        updatePatient ($id, $firstName, $lastName, $married, $age, $birthdate, $heightFinal, $weight);
         echo "<h2>Patient Added: </h2>";
         echo "<p>Name: ", $firstName , " " , $lastName, "</p>";
         echo "<p>Marital Status: ", $married ;
@@ -138,27 +157,31 @@ if (isset($_POST['submitBtn'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Intake</title>
+    <title>Update Patient</title>
 </head>
 <body>
-    <h1>Patient Intake</h1>
+    <h1>Update Patient</h1>
     <h3>Please enter your information</h3>
 
 
     <form method="post" name='checkForm'>
         <div>
+            <input type="hidden" name="age" value="<?= $age; ?>">
+            <input type="hidden" name="patientId" value="<?= $id; ?>">
+        </div>
+        <div>
             <label for="firstName">First Name: </label>
-            <input type="text" name='firstName' value="<?php echo $firstName?>">
+            <input type="text" name='firstName' value="<?php echo $fName?>">
         </div>
         <div>
             <label for="lastName">Last Name: </label>
-            <input type="text" name='lastName'value="<?php echo $lastName?>">
+            <input type="text" name='lastName'value="<?php echo $lName?>">
         </div>
         <div>
             <label for="married">Married: </label>
-            <input type="radio" id="ismarried" name='married' value='Is married' <?= $married==true?"checked":"" ?>>
+            <input type="radio" id="ismarried" name='married' value='Is married' <?= $married==0?"checked":""; ?>>
             <label for="ismarried">Yes</label>
-            <input type="radio" id="nomarried" name='married' value='Not married'<?= $married==false?"checked":"" ?>>
+            <input type="radio" id="nomarried" name='married' value='Not married'<?= $married==1?"checked":""; ?>>
             <label for="nomarried">No</label>
         </div>
         <div>
