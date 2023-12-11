@@ -16,8 +16,10 @@
 <body>
     <ul>
         <?php
+            echo 'C:\xampp\htdocs\SE266\finalPage\\';
             foreach ($an as $a) {
                 echo "<li>$a</li>";
+
             }
         ?>
     </ul>

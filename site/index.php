@@ -20,7 +20,7 @@
         <li><a href="">Week 7</a></li>
         <li><a href="">Week 8</a></li>
         <li><a href="">Week 9</a></li>
-        <li><a href="">Week 10</a></li>
+        <li><a href="../finalPage/home.php">Final Page</a></li>
     </ul>
     <?php $file = basename($_SERVER['PHP_SELF']);
         $mod_date=date("F d Y h:i:s A", filemtime($file));

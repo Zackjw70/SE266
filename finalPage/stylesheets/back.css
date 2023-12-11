@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+
+html, div, button, a, footer, h1, h2, h3, table{
+    color: #39254D;
+    background-color: whitesmoke;
+    font-family: 'Raleway', cursive;
+
+}
+a:hover{
+    text-decoration: none;
+    color: aqua;
+}
+.gInput{
+    width: 500px; 
+    margin-left: 5%;
+}
+.gLabel{
+    width: 10%;
+}
+.table{
+    margin-bottom: none;
+}
+.img{
+    height: 200px;
+    width: 350px;
+}
